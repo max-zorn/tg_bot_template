@@ -10,13 +10,8 @@ from tgbot.filters.admin import AdminFilter
 from tgbot.handlers.admin import register_admin
 from tgbot.handlers.echo import register_echo
 from tgbot.handlers.user import register_user
-from tgbot.middlewares.db import DbMiddleware
 
 logger = logging.getLogger(__name__)
-
-
-def register_all_middlewares(dp):
-    dp.setup_middleware(DbMiddleware())
 
 
 def register_all_filters(dp):
@@ -44,7 +39,6 @@ async def main():
 
     bot['config'] = config
 
-    register_all_middlewares(dp)
     register_all_filters(dp)
     register_all_handlers(dp)
 
